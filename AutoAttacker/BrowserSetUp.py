@@ -9,13 +9,14 @@ Strath Uni - 201720173
 #My Modules
 from UserSetUp import *
 from ExtModulesSetUp import *
-from SqliStatementGen import *
+from StatementGen import *
+from passCracker import *
 
 def openBrowser():
     try:
         if BROWSER_CHOICE == 1:
             ChromeOptions = CHROME_Opt()
-            ChromeOptions.headless = HIDE_BROWSER
+            ChromeOptions.headless = HIDE_BROWSER 
             return webdriver.Chrome(CHROME_LOC, chrome_options=ChromeOptions)
         elif BROWSER_CHOICE == 0:
             FireFoxoptions = FIREFOX_Opt()
@@ -23,6 +24,13 @@ def openBrowser():
             return webdriver.Firefox(executable_path =FIREFOX_LOC, options=FireFoxoptions)
     except:
         print(BROWSER_CHOICE_ERROR)
+
+def elemPresenceCheck_XPATH(browser, XPATH):
+    try:
+        return browser.find_element(By.XPATH, XPATH)
+
+    except:
+        return False
 
 def getElem(browser, elementID, FindingMethod):
     try:
@@ -34,6 +42,7 @@ def getElem(browser, elementID, FindingMethod):
             return browser.find_element(By.TAG_NAME, elementID)
     except:
          print(GET_ELEM_ERROR + str(elementID))
+
 
 def sendInfo(elem, Info):
     try:
@@ -51,7 +60,7 @@ def sendInfoReturn(elem, Info):
         
         
 def waitForLoad(browser, elementID,FindingMethod):   
-    wait  = WebDriverWait(browser,10) 
+    wait  = WebDriverWait(browser,30) 
     try:
         if FindingMethod == 0:
             wait.until(EC.element_to_be_clickable((By.NAME, elementID)))
@@ -98,14 +107,14 @@ def changeSecurity(browser, securityLevel):
     elem = getElem(browser, DVWA_SECURITY_SUBMIT_ID, 0)
     elem.click()
 
-    
+#SQL INJECTION ATTACKS     
 def SQLI_LOW_LEVEL(browser):
     elem = getElem(browser,SQL_I_INSERT_BOX_ID,  0)
     if USE_GENERATED_ATTACKS:
         sendInfoReturn(elem, sqliStatementGenerator(True)) 
     else:
-        sendInfoReturn(elem, SQLI_ATTACK_DEFAULT)    
-    
+        sendInfoReturn(elem, SQLI_ATTACK_DEFAULT)   
+
 def SQLI_MID_LEVEL(browser):
     elem = getElem(browser,SQL_I_INSERT_BOX_ID,  0)
     input_list = getElem(elem, SQL_I_DROP_ID, 2)
@@ -127,7 +136,56 @@ def SQLI_HIGH_LEVEL(browser):
     browser.switch_to.window(main_page)
 
     
-    
+#COMMAND INJECTION ATTACKS
+def COMSI_LOW_LEVEL(browser):
+    elem = getElem(browser,COMS_I_INSERT_BOX_IP,  0)
+    if USE_GENERATED_ATTACKS:
+        sendInfoReturn(elem, comiStatementGenerator(1)) 
+    else:
+        sendInfoReturn(elem, COMSI_ATTACK_DEFAULT)  
+
+
+def COMSI_MID_LEVEL(browser):
+    elem = getElem(browser,COMS_I_INSERT_BOX_IP,  0)
+    if USE_GENERATED_ATTACKS:
+        sendInfoReturn(elem, comiStatementGenerator(2)) 
+    else:
+        sendInfoReturn(elem, COMSI_ATTACK_DEFAULT) 
+
+
+def COMSI_HIGH_LEVEL(browser):
+    elem = getElem(browser,COMS_I_INSERT_BOX_IP,  0)
+    if USE_GENERATED_ATTACKS:
+        sendInfoReturn(elem, comiStatementGenerator(3)) 
+    else:
+        sendInfoReturn(elem, COMSI_ATTACK_DEFAULT) 
+        
+def BRUTE_FORCE_ATTACK(browser, passFail, sleepTime):
+    if RANDOM_START_BRUTE_FORCE and passFail:
+        i = random.randint(50, 98)
+    elif RANDOM_START_BRUTE_FORCE and not passFail:
+        i = random.randint(95, 98)
+    else:
+        i = 0;
+    if passFail: 
+        maxI = len(PassDic);
+    else:
+        maxI = 98
+    Found = False
+    while  Found == False and i<maxI:
+        time.sleep(sleepTime)
+        elem = getElem(browser,LOGIN_UNAME_BOX_ID,  0)
+        sendInfo(elem, DVWAUSER)
+        elem = getElem(browser,LOGIN_PASS_BOX_ID,  0)
+        sendInfoReturn(elem, PassCracker(i, PassDic))
+        if elemPresenceCheck_XPATH(browser, BRUTE_FORCE_PASS_XPATH) != False:
+            Found = True
+            print('Password is found, it is -  ' + PassCracker(i-1, PassDic))
+        else:
+            i = i + 1;
+    if i==maxI and Found == False:
+        print('Password not found')
+            
     
     
     
