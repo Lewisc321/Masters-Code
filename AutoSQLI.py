@@ -11,6 +11,10 @@ Strath Uni - 201720173
 from BrowserSetUp import *
 from Pcap_Capture import *
 from NameGenerator import *
+from KaliSetUp import *
+
+#Set up Kali settings 
+setUpKali()
 
 #Open Selenium browser
 browser = openBrowser()
@@ -25,7 +29,7 @@ loginDVWA(browser)
 if ABSOLUTE_NUMBERING:
     currentNumb = getAbsoluteNumber(SQLI_FOLDER)
     
-for i in range(1,EASY_PASS):
+for i in range(1,EASY_PASS+1):
     #Click SQLI link 
     clickLink_XPATH(browser, SQL_INJECTION_XPATH)
     #If using VM start PCAP
@@ -34,7 +38,7 @@ for i in range(1,EASY_PASS):
             PcapName = nameFile([currentNumb + i, USER_LABEL,SQLI_LABEL, LEVEL_LABELS[0],PASS_FAIL_LABEL[0]])
         else:
             PcapName = nameFile([i, USER_LABEL,SQLI_LABEL, LEVEL_LABELS[0],PASS_FAIL_LABEL[0]])
-        p = startPcap(PcapName)
+        p = startPcap(SQLI_FOLDER,PcapName)
         
     #Sql injection Low level attack
     SQLI_LOW_LEVEL(browser)
@@ -57,7 +61,7 @@ changeSecurity(browser, 'Medium')
 if ABSOLUTE_NUMBERING:
     currentNumb = getAbsoluteNumber(SQLI_FOLDER)
 
-for i in range(1, MED_PASS):
+for i in range(1, MED_PASS+1):
     #Click SQLI link 
     clickLink_XPATH(browser, SQL_INJECTION_XPATH)
     
@@ -66,8 +70,8 @@ for i in range(1, MED_PASS):
         if ABSOLUTE_NUMBERING:
             PcapName = nameFile([currentNumb + i, USER_LABEL,SQLI_LABEL, LEVEL_LABELS[1],PASS_FAIL_LABEL[0]])
         else:
-            PcapName = nameFile([i, USER_LABEL,SQLI_LABEL, LEVEL_LABELS[1],PASS_FAIL_LABEL[0]])
-        p = startPcap(PcapName)
+            PcapName = nameFile([SQLI_FOLDER, i, USER_LABEL,SQLI_LABEL, LEVEL_LABELS[1],PASS_FAIL_LABEL[0]])
+        p = startPcap(SQLI_FOLDER,PcapName)
         
     #Sql injection Mid level attack
     SQLI_MID_LEVEL(browser)
@@ -88,7 +92,7 @@ changeSecurity(browser, 'High')
 if ABSOLUTE_NUMBERING:
     currentNumb = getAbsoluteNumber(SQLI_FOLDER)
 
-for i in range(1, HARD_PASS):
+for i in range(1, HARD_PASS+1):
 
     
     #Click SQLI link 
@@ -100,7 +104,7 @@ for i in range(1, HARD_PASS):
             PcapName = nameFile([currentNumb + i, USER_LABEL,SQLI_LABEL, LEVEL_LABELS[2],PASS_FAIL_LABEL[0]])
         else:
             PcapName = nameFile([i, USER_LABEL,SQLI_LABEL, LEVEL_LABELS[2],PASS_FAIL_LABEL[0]])
-        p = startPcap(PcapName)
+        p = startPcap(SQLI_FOLDER,PcapName)
     
     #High Level SQL attack
     SQLI_HIGH_LEVEL(browser)
@@ -123,7 +127,7 @@ if ABSOLUTE_NUMBERING:
 
 print(MED_FAIL_WARNING)
 
-for i in range(1, MED_FAIL):
+for i in range(1, MED_FAIL+1):
     #Click SQLI link 
     clickLink_XPATH(browser, SQL_INJECTION_XPATH)
     
@@ -133,7 +137,7 @@ for i in range(1, MED_FAIL):
             PcapName = nameFile([currentNumb + i, USER_LABEL,SQLI_LABEL, LEVEL_LABELS[1],PASS_FAIL_LABEL[1]])
         else:
             PcapName = nameFile([i, USER_LABEL,SQLI_LABEL, LEVEL_LABELS[1],PASS_FAIL_LABEL[1]])
-        p = startPcap(PcapName)
+        p = startPcap(SQLI_FOLDER,PcapName)
         
     #Sql injection Mid level attack
     SQLI_LOW_LEVEL(browser)
@@ -159,7 +163,7 @@ if ABSOLUTE_NUMBERING:
 
 print(HARD_FAIL_WARNING)
 
-for i in range(1, HARD_FAIL):
+for i in range(1, HARD_FAIL+1):
 
     
     #Click SQLI link 
@@ -168,10 +172,10 @@ for i in range(1, HARD_FAIL):
     #If using VM start PCAP
     if USING_VM :
         if ABSOLUTE_NUMBERING:
-            PcapName = nameFile([currentNumb + i, USER_LABEL,SQLI_LABEL, LEVEL_LABELS[2],PASS_FAIL_LABEL[1]])
+            PcapName = nameFile([ currentNumb + i, USER_LABEL,SQLI_LABEL, LEVEL_LABELS[2],PASS_FAIL_LABEL[1]])
         else:
-            PcapName = nameFile([i, USER_LABEL,SQLI_LABEL, LEVEL_LABELS[2],PASS_FAIL_LABEL[1]])
-        p = startPcap(PcapName)
+            PcapName = nameFile([ i, USER_LABEL,SQLI_LABEL, LEVEL_LABELS[2],PASS_FAIL_LABEL[1]])
+        p = startPcap(SQLI_FOLDER,PcapName)
         
     #High Level SQL attack
     SQLI_LOW_LEVEL(browser)
@@ -199,7 +203,7 @@ if ABSOLUTE_NUMBERING:
 
 print(IMPOSS_FAIL_WARNING)
 
-for i in range(1, IMPOSS_FAIL):
+for i in range(1, IMPOSS_FAIL+1):
 
     
     #Click SQLI link 
@@ -208,10 +212,10 @@ for i in range(1, IMPOSS_FAIL):
     #If using VM start PCAP
     if USING_VM :
         if ABSOLUTE_NUMBERING:
-            PcapName = nameFile([currentNumb + i, USER_LABEL,SQLI_LABEL, LEVEL_LABELS[3],PASS_FAIL_LABEL[1]])
+            PcapName = nameFile([ currentNumb + i, USER_LABEL,SQLI_LABEL, LEVEL_LABELS[3],PASS_FAIL_LABEL[1]])
         else:
             PcapName = nameFile([i, USER_LABEL,SQLI_LABEL, LEVEL_LABELS[3],PASS_FAIL_LABEL[1]])
-        p = startPcap(PcapName)
+        p = startPcap(SQLI_FOLDER,PcapName)
     
         
     #High Level SQL attack
