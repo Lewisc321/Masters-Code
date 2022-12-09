@@ -11,8 +11,8 @@ Strath Uni - 201720173
 from UserSetUp import *
 from ExtModulesSetUp import *
 
-def startPcap(pcapTitle):
-    pcapTitle = SQLI_FOLDER + pcapTitle
+def startPcap(FOLDER, pcapTitle):
+    pcapTitle = FOLDER + pcapTitle
     try:
         cmd1 = subprocess.Popen(['echo',SUDO_PASS], stdout=subprocess.PIPE)
         process = subprocess.Popen(['sudo', 'tcpdump','-i', 'lo', '-w', pcapTitle] , stdout=subprocess.PIPE, stdin =cmd1.stdout)
@@ -25,7 +25,7 @@ def startPcap(pcapTitle):
 
 def endPcap(process):
     try:
-        time.sleep(1)
+        time.sleep(3)
         cmd1 = subprocess.Popen(['echo',SUDO_PASS], stdout=subprocess.PIPE)
         end = subprocess.Popen(['sudo', 'killall', 'tcpdump', str(process.pid)] ,stdin=cmd1.stdout,  stdout=subprocess.PIPE)
         time.sleep(1)
