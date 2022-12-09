@@ -20,12 +20,23 @@ DVWAPASS = 'password';
 URL_OPTIONS = [URL_HOST, URL_VM]
 USING_VM = 0;
 LOGIN = URL_OPTIONS[USING_VM] + LOGIN_EXT
+USING_KALI = 0;
+
+
+RANDOM_START_BRUTE_FORCE = True;
 
 #SQLI attacks
 USE_GENERATED_ATTACKS = True
 
 #SQLI FOLDER
 SQLI_FOLDER = './SQLIATTACKS/'
+
+#COMSI FOLDER
+COMSI_FOLDER = './COMSIATTACKS/'
+
+#Brute Force Folder
+BRUTE_FORCE_FOLDER = './BRUTEFORCEATTACKS/'
+
 
 ABSOLUTE_NUMBERING = True;
 
@@ -34,7 +45,7 @@ CHROME_LOC = './Drivers/chromedriver'
 FIREFOX_LOC ='./Drivers/geckodriver'
 
 #Choice of Browser 1 for chrome, 0 for firefox
-BROWSER_CHOICE = 1
+BROWSER_CHOICE = 1;
 
 #Sudo password
 SUDO_PASS = ''
@@ -42,14 +53,16 @@ SUDO_PASS = ''
 #Labelling
 USER_LABEL = ''
 SQLI_LABEL = 'sqli'
+COMI_LABEL = 'comsi'
+BRUTE_LABEL = 'brute_force'
 LEVEL_LABELS = ['easy', 'medium', 'hard', 'impossible']
 PASS_FAIL_LABEL = ['p', 'f']
 
-#Iterations one less than shown
-EASY_PASS= 4
-MED_PASS = 4
-HARD_PASS = 5
+#Iterations 
+EASY_PASS= 3
+MED_PASS = 3
+HARD_PASS = 4
 
-MED_FAIL = 4
-HARD_FAIL = 4
-IMPOSS_FAIL = 5
+MED_FAIL = 3
+HARD_FAIL = 3
+IMPOSS_FAIL = 4
