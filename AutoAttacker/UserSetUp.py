@@ -37,6 +37,16 @@ COMSI_FOLDER = './COMSIATTACKS/'
 #Brute Force Folder
 BRUTE_FORCE_FOLDER = './BRUTEFORCEATTACKS/'
 
+#XSS stored Folder
+XSS_STORED_FOLDER = './XSSSTOREDTTACKS/'
+
+#XSS reflected Folder
+XSS_REFLECTED_FOLDER = './XSSREFLECTEDATTACKS/'
+
+#XSS DOM Folder
+XSS_DOM_FOLDER = './XSSDOMATTACKS/'
+
+
 
 ABSOLUTE_NUMBERING = True;
 
@@ -51,10 +61,13 @@ BROWSER_CHOICE = 1;
 SUDO_PASS = ''
 
 #Labelling
-USER_LABEL = ''
+USER_LABEL = '__'
 SQLI_LABEL = 'sqli'
 COMI_LABEL = 'comsi'
 BRUTE_LABEL = 'brute_force'
+XSS_STORED_LABEL = 'xss_stored'
+XSS_REFLECTED_LABEL ='xss_reflected'
+XSS_DOM_LABEL = 'xss_dom'
 LEVEL_LABELS = ['easy', 'medium', 'hard', 'impossible']
 PASS_FAIL_LABEL = ['p', 'f']
 

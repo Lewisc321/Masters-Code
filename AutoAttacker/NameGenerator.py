@@ -12,14 +12,21 @@ Strath Uni - 201720173
 from UserSetUp import *
 from ExtModulesSetUp import *
 
+from BrowserSetUp import *
+from Pcap_Capture import *
+
+from KaliSetUp import *
+
+
 def nameFile(NameTexts):
     i = 0;
     output = '';
     for text in NameTexts:
         text = str(text)
-        if i == (len(NameTexts)):
+        if i == (len(NameTexts)-1):
             output = output + text
-        output = output + text + '_'
+        else:
+            output = output + text + '_'
         i = i + 1;
     return output +'.pcap'
         
@@ -31,4 +38,6 @@ def getAbsoluteNumber(folder):
     else:
         return False
     
+
+
 

