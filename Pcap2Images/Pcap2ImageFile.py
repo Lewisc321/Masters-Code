@@ -39,7 +39,7 @@ def createArray(fileName):
                 break;
             byte = byte_s[0]
             Graypixels.append(byte+1)        
-            RGBpixels.append(gray2rgb(byte))
+            RGBpixels.append(gray2rgb(byte+1))
     return(Graypixels, RGBpixels)
 
 def paddArraystoMatrix(gray, colour):
@@ -70,9 +70,7 @@ def PCAP2_Image(PCAP_file_path, PCAP_Name):
 
 
 
-PCAP2_Image('./Example_PCAPS/XSSSTOREDTTACKS\9_CM_xss_stored_hard_p.pcap', '9_CM_xss_stored_hard_p')
-PCAP2_Image('./Example_PCAPS/XSSSTOREDTTACKS\9_CM_xss_stored_hard_p.pcap', '9_CM_xss_stored_hard_p')
-PCAP2_Image('./Example_PCAPS/XSSSTOREDTTACKS\9_CM_xss_stored_hard_p.pcap', '9_CM_xss_stored_hard_p')
+
 
 
 
