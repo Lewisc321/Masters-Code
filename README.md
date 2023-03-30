@@ -1,20 +1,32 @@
 # **Master-s-Code**
-## PCAP to CSV
 
-### Python Script 1 (Split_+_Rename.py): 
-Splits all Pcap’s based on IP Address and renames files 
- 
-### Manuel Step: 
-Move relevant files to Malicious Folder 
-Remove the ‘?’ from the filename or the script will fail 
-Create an empty file in the Json folder directory and call it ‘all_pcap.csv’  
- 
-### Python Script 2 (CSV.py): 
-Convert all files in Malicious Folder to Json then to CSV for Excel Sheet 
- 
-## Notes: 
-Directory Locations will be specific to your System 
-os.system commands are written for Mac Terminal, may be different if using different OS 
+## *PCAP to CSV Converter*
+
+This Python script reads in PCAP files and converts the packet data to a CSV file. The resulting CSV file contains information on the interactions between ports on a network. This is the third and most stable version of the code.
+
+### Prerequisites
+
+This script requires the scapy library to be installed. It can be installed using
+```python
+pip install scapy
+```
+
+Set the pcap_dir variable to the directory where the PCAP files are located.
+Set the csv_dir variable to the directory where the CSV files should be saved.
+Run the script.
+The script will loop through all the PCAP files in the pcap_dir, convert them to a list of dictionaries, and write the data to a CSV file in the csv_dir.
+
+The resulting CSV file will contain the following columns:
+
+source_ip: the source IP address of the packet
+
+destination_ip: the destination IP address of the packet
+
+source_port: the source port of the packet
+
+destination_port: the destination port of the packet
+
+protocol: the protocol used by the packet (e.g. TCP, UDP)
 
 ## ReadMe File -  Auto Attacks
 
