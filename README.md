@@ -96,3 +96,28 @@ This is the folder where your pcap files will be sent after your tcp dump. If yo
 This is the folder where your pcap files will be sent after your tcp dump from the command injection attack. If you use absolute numbering this file will fill up with many many pcap files. If you turn off absolute numbering, relative numbering will be used and the TCPdump will overwrite any old files with the same name.
 #### /BRUTEFORCEATTACKS 
 This is the folder where your pcap files will be sent after your tcp dump from the Brute Force Password attack. If you use absolute numbering this file will fill up with many many pcap files. If you turn off absolute numbering, relative numbering will be used and the TCPdump will overwrite any old 
+
+
+## Counter Script
+
+This Python script takes the name of a CSV file from the user and outputs four text files containing the names of all the source and destination ports and how often the network packet used each of these ports. The CSV file should be located in the specified directory.
+
+### Requirements
+
+pandas, which can be installed with
+
+```python
+pip install pandas
+```
+
+datetime, which can be installed with
+
+```python
+pip install datetime
+```
+
+collections, which can be installed with
+
+```python
+pip install collections
+```
