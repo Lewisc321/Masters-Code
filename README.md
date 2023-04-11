@@ -1,15 +1,16 @@
 # **Master-s-Code**
 
-## *PCAP to CSV Converter*
+## *PCAP pre-processing*
 
-This Python script reads in PCAP files and converts the packet data to a CSV file. The resulting CSV file contains information on the interactions between ports on a network. This is the third and most stable version of the code.
+The following scripts pre-process the pcap files and get them into the format needed to eventually train and model the decision tree classifier.
 
-### Prerequisites
+### pcap2csv_new
 
 This script requires the scapy library to be installed. It can be installed using
 ```python
 pip install scapy
 ```
+This library can be accessed at https://github.com/secdev/scapy
 
 Set the pcap_dir variable to the directory where the PCAP files are located.
 Set the csv_dir variable to the directory where the CSV files should be saved.
@@ -27,6 +28,9 @@ source_port: the source port of the packet
 destination_port: the destination port of the packet
 
 protocol: the protocol used by the packet (e.g. TCP, UDP)
+
+####Notes
+In this latest version of the script, the if TCP in packet statement has been added to check if the TCP layer exists in the packet before accessing its fields. This is to avoid errors that can occur if the packet uses a different protocol that is not TCP, or if the TCP layer was not captured in the packet.
 
 ## ReadMe File -  Auto Attacks
 
