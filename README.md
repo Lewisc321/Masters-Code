@@ -32,6 +32,8 @@ protocol: the protocol used by the packet (e.g. TCP, UDP)
 #### Notes
 In this latest version of the script, the if TCP in packet statement has been added to check if the TCP layer exists in the packet before accessing its fields. This is to avoid errors that can occur if the packet uses a different protocol that is not TCP, or if the TCP layer was not captured in the packet.
 
+### Counter Script
+
 ## ReadMe File -  Auto Attacks
 
 
