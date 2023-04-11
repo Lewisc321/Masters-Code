@@ -2,8 +2,8 @@ import os
 from scapy.all import *
 import csv
 
-pcap_dir = '/Users/lewis/Desktop/Uni/5th_Year/EM501/Data/Pcap/'
-csv_dir = '/Users/lewis/Desktop/Uni/5th_Year/EM501/Data/Pcap/CSV'
+pcap_dir = '/path/to/pcap_dir'
+csv_dir = '/path/to/csv_dir'
 
 if not os.path.exists(csv_dir):
     os.makedirs(csv_dir)
