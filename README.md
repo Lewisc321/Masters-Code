@@ -1,4 +1,4 @@
-# **Master-s-Code**
+# **EM501 Masters Project Group O Scripts**
 
 ## *PCAP pre-processing*
 
