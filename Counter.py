@@ -8,10 +8,10 @@ import datetime
 from pandas import DataFrame
 
 #Point to Directory
-csv_path = '/Users/lewis/Desktop/Uni/5th_Year/EM501/Data/Pcap/CSV/BRUTEFORCEATTACKS/'
+csv_dir = '/path/to/csv_dir'
 
 #Point to File
-df = pd.read_csv(csv_path + '', low_memory=False)
+df = pd.read_csv(csv_path + 'file_name', low_memory=False)
 
 # Statistical Analysis
 from collections import Counter
