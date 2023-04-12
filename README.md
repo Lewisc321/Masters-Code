@@ -52,6 +52,34 @@ DestinationPorts1.txt: Contains the unique destination ports found in the CSV fi
 
 Destinationcounts1.txt: Contains the counts of each destination port in descending order.
 
+## *Decision Tree*
+
+This is a Python script that trains a Decision Tree Classifier to classify successful cyber attacks based on a the amount of times each network port was interacted in the network oacket. The script reads CSV file containing network traffic data, trains the classifier, and outputs the performance metrics, such as accuracy, classification report, and confusion matrix.
+
+#### Note
+
+This .csv file must be properly preprocessed, meaning the source and network counts from each type of attack are considered and all columns are properly alligned.
+
+#### Get Packages
+
+To install the necessary packages for this script to run, the following code can be run 
+```python
+pip install scikit-learn
+pip install joblib
+pip install ipython
+```
+#### Usage
+
+To use this script, point to the preprocessed dataset. Then define the target variable (attack type) and the input variables (everything else). A train test split can then be defined. More on this can be found here: https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html
+
+#### Outputs
+
+The output of this is a .dot file that shows the decision tree and how it works, this can be interprited using a software such as Graphviz: https://graphviz.org
+
+It also outputs several different scikit learn metrics to the terminal that give an idea of how well the tree is performing these are detailed at: https://scikit-learn.org/stable/modules/classes.html#module-sklearn.metrics
+
+It also outputs a .joblib file to the same folder as the original script. This can be called to sort new data
+
 ## ReadMe File -  Auto Attacks
 
 
