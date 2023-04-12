@@ -17,10 +17,10 @@ import collections
 from IPython.display import Image
 
 #Point to Directory
-csv_path = '/Users/lewis/Desktop/Uni/5th_Year/EM501/PYTHON_Code/DecisionTree/'
+csv_path = '/path/to/csv_dir'
 
 #Point to File
-df = pd.read_csv(csv_path + 'Training_Data_2.csv', low_memory=False)
+df = pd.read_csv(csv_path + 'Training_Data.csv', low_memory=False)
 
 #%Decision Tree Imports
 from sklearn import tree
