@@ -80,6 +80,10 @@ It also outputs several different scikit learn metrics to the terminal that give
 
 It also outputs a .joblib file to the same folder as the original script. This can be called to sort new data
 
+## Classifier
+
+This script simply calls the .joblib file, which is the decision tree trained and allows a new and untrained dataset to be classified into one of the groups of cyber-attacks 
+
 ## ReadMe File -  Auto Attacks
 
 
