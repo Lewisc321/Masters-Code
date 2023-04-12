@@ -56,23 +56,23 @@ dataset_counter2 = Counter(eval(df2))
 values2 = sorted(dataset_counter2.values(), reverse=True)
 
 # Define the filename for your output file
-filename1 = "/Users/lewis/Desktop/Uni/5th_Year/EM501/PYTHON Code/PortNames/SourcePorts1.txt"
+filename1 = "/new/folder/PortNames/SourcePorts1.txt"
 
 # Open the file for writing and write the output string to it
 with open(filename1, "w") as output_file:
     output_file.write(result1)
 
-filename2 = "/Users/lewis/Desktop/Uni/5th_Year/EM501/PYTHON Code/PortNames/Sourcecounts1.txt"
+filename2 = "/new/folder/PortNames/Sourcecounts1.txt"
 
 with open(filename2, "w") as output_file:
     output_file.write(str(values1))
 
-filename3 = "/Users/lewis/Desktop/Uni/5th_Year/EM501/PYTHON Code/PortNames/DestinationPorts1.txt"
+filename3 = "/new/folder/PortNames/DestinationPorts1.txt"
 
 with open(filename3, "w") as output_file:
     output_file.write(result2)
 
-filename4 = "/Users/lewis/Desktop/Uni/5th_Year/EM501/PYTHON Code/PortNames/Destinationcounts1.txt"
+filename4 = "/new/folder/PortNames/Destinationcounts1.txt"
 
 with open(filename4, "w") as output_file:
     output_file.write(str(values2))
