@@ -34,6 +34,21 @@ In this latest version of the script, the if TCP in packet statement has been ad
 
 ### Counter Script
 
+This Python script takes the name of a CSV file from the user and outputs four text files containing the names of all the source and destination ports and how often the network packet used each of these ports. The CSV file should be located in the specified directory.
+
+The script needs pandas to work, which can be installed with;
+```python
+pip install pandas
+```
+#### Output Files
+
+The script generates four output files:
+
+SourcePorts1.txt: Contains the unique source ports found in the CSV file in decending order.
+Sourcecounts1.txt: Contains the counts of each source port in descending order.
+DestinationPorts1.txt: Contains the unique destination ports found in the CSV file in decending order.
+Destinationcounts1.txt: Contains the counts of each destination port in descending order.
+
 ## ReadMe File -  Auto Attacks
 
 
@@ -102,11 +117,6 @@ This is the folder where your pcap files will be sent after your tcp dump. If yo
 This is the folder where your pcap files will be sent after your tcp dump from the command injection attack. If you use absolute numbering this file will fill up with many many pcap files. If you turn off absolute numbering, relative numbering will be used and the TCPdump will overwrite any old files with the same name.
 #### /BRUTEFORCEATTACKS 
 This is the folder where your pcap files will be sent after your tcp dump from the Brute Force Password attack. If you use absolute numbering this file will fill up with many many pcap files. If you turn off absolute numbering, relative numbering will be used and the TCPdump will overwrite any old 
-
-
-## Counter Script
-
-This Python script takes the name of a CSV file from the user and outputs four text files containing the names of all the source and destination ports and how often the network packet used each of these ports. The CSV file should be located in the specified directory.
 
 ### Requirements
 
