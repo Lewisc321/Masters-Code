@@ -45,8 +45,11 @@ pip install pandas
 The script generates four output files:
 
 SourcePorts1.txt: Contains the unique source ports found in the CSV file in decending order.
+
 Sourcecounts1.txt: Contains the counts of each source port in descending order.
+
 DestinationPorts1.txt: Contains the unique destination ports found in the CSV file in decending order.
+
 Destinationcounts1.txt: Contains the counts of each destination port in descending order.
 
 ## ReadMe File -  Auto Attacks
