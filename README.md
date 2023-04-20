@@ -1,22 +1,90 @@
-# **Master-s-Code**
-## PCAP to CSV
+# **EM501 Masters Project Group O Scripts**
 
-### Python Script 1 (Split_+_Rename.py): 
-Splits all Pcap’s based on IP Address and renames files 
- 
-### Manuel Step: 
-Move relevant files to Malicious Folder 
-Remove the ‘?’ from the filename or the script will fail 
-Create an empty file in the Json folder directory and call it ‘all_pcap.csv’  
- 
-### Python Script 2 (CSV.py): 
-Convert all files in Malicious Folder to Json then to CSV for Excel Sheet 
- 
-## Notes: 
-Directory Locations will be specific to your System 
-os.system commands are written for Mac Terminal, may be different if using different OS 
+## *PCAP pre-processing*
 
-## ReadMe File -  Auto Attacks
+The following scripts pre-process the pcap files and get them into the format needed to eventually train and model the decision tree classifier.
+
+### pcap2csv_new
+
+This script requires the scapy library to be installed. It can be installed using
+```python
+pip install scapy
+```
+This library can be accessed at https://github.com/secdev/scapy
+
+Set the pcap_dir variable to the directory where the PCAP files are located.
+Set the csv_dir variable to the directory where the CSV files should be saved.
+Run the script.
+The script will loop through all the PCAP files in the pcap_dir, convert them to a list of dictionaries, and write the data to a CSV file in the csv_dir.
+
+The resulting CSV file will contain the following columns:
+
+source_ip: the source IP address of the packet
+
+destination_ip: the destination IP address of the packet
+
+source_port: the source port of the packet
+
+destination_port: the destination port of the packet
+
+protocol: the protocol used by the packet (e.g. TCP, UDP)
+
+#### Notes
+In this latest version of the script, the if TCP in packet statement has been added to check if the TCP layer exists in the packet before accessing its fields. This is to avoid errors that can occur if the packet uses a different protocol that is not TCP, or if the TCP layer was not captured in the packet.
+
+### Counter Script
+
+This Python script takes the name of a CSV file from the user and outputs four text files containing the names of all the source and destination ports and how often the network packet used each of these ports. The CSV file should be located in the specified directory.
+
+The script needs pandas to work, which can be installed with;
+```python
+pip install pandas
+```
+#### Output Files
+
+The script generates four output files:
+
+SourcePorts1.txt: Contains the unique source ports found in the CSV file in decending order.
+
+Sourcecounts1.txt: Contains the counts of each source port in descending order.
+
+DestinationPorts1.txt: Contains the unique destination ports found in the CSV file in decending order.
+
+Destinationcounts1.txt: Contains the counts of each destination port in descending order.
+
+## *Decision Tree*
+
+This is a Python script that trains a Decision Tree Classifier to classify successful cyber attacks based on a the amount of times each network port was interacted in the network oacket. The script reads CSV file containing network traffic data, trains the classifier, and outputs the performance metrics, such as accuracy, classification report, and confusion matrix.
+
+#### Note
+
+This .csv file must be properly preprocessed, meaning the source and network counts from each type of attack are considered and all columns are properly alligned.
+
+#### Get Packages
+
+To install the necessary packages for this script to run, the following code can be run 
+```python
+pip install scikit-learn
+pip install joblib
+pip install ipython
+```
+#### Usage
+
+To use this script, point to the preprocessed dataset. Then define the target variable (attack type) and the input variables (everything else). A train test split can then be defined. More on this can be found here: https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html
+
+#### Outputs
+
+The output of this is a .dot file that shows the decision tree and how it works, this can be interprited using a software such as Graphviz: https://graphviz.org
+
+It also outputs several different scikit learn metrics to the terminal that give an idea of how well the tree is performing these are detailed at: https://scikit-learn.org/stable/modules/classes.html#module-sklearn.metrics
+
+It also outputs a .joblib file to the same folder as the original script. This can be called to sort new data
+
+## Classifier
+
+This script simply calls the .joblib file, which is the decision tree trained and allows a new and untrained dataset to be classified into one of the groups of cyber-attacks 
+
+## *Auto Attacks*
 
 
 ## **How to run**
@@ -91,6 +159,7 @@ This is the folder where your pcap files will be sent after your tcp dump. If yo
 #### /COMSIATTACKS 
 This is the folder where your pcap files will be sent after your tcp dump from the command injection attack. If you use absolute numbering this file will fill up with many many pcap files. If you turn off absolute numbering, relative numbering will be used and the TCPdump will overwrite any old files with the same name.
 #### /BRUTEFORCEATTACKS 
+
 This is the folder where your pcap files will be sent after your tcp dump from the Brute Force Password attack. If you use absolute numbering this file will fill up with many many pcap files. If you turn off absolute numbering, relative numbering will be used and the TCPdump will overwrite any old files with the same name.
 #### /XSSDOMATTACKS 
 This is the folder where your pcap files will be sent after your tcp dump from the Brute Force Password attack. If you use absolute numbering this file will fill up with many many pcap files. If you turn off absolute numbering, relative numbering will be used and the TCPdump will overwrite any old files with the same name.
@@ -100,3 +169,26 @@ This is the folder where your pcap files will be sent after your tcp dump from t
 This is the folder where your pcap files will be sent after your tcp dump from the Brute Force Password attack. If you use absolute numbering this file will fill up with many many pcap files. If you turn off absolute numbering, relative numbering will be used and the TCPdump will overwrite any old files with the same name.
 #### /SCANS
 This is the folder where your pcap files will be sent after your tcp dump from the Random Scans. If you use absolute numbering this file will fill up with many many pcap files. If you turn off absolute numbering, relative numbering will be used and the TCPdump will overwrite any old files with the same name.
+=======
+This is the folder where your pcap files will be sent after your tcp dump from the Brute Force Password attack. If you use absolute numbering this file will fill up with many many pcap files. If you turn off absolute numbering, relative numbering will be used and the TCPdump will overwrite any old 
+
+### Requirements
+
+pandas, which can be installed with
+
+```python
+pip install pandas
+```
+
+datetime, which can be installed with
+
+```python
+pip install datetime
+```
+
+collections, which can be installed with
+
+```python
+pip install collections
+```
+
