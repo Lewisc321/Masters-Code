@@ -131,7 +131,7 @@ This is a csv file that contains the constituents of an SQLI attack. The first r
 #### Poss_COMS_Injections.csv 
 This is a csv file that contains the constituents of an command injection attack. The first row is just possible nonsense words. The second row contains possible operators for low level security injections, the third row contains possible operators for medium level attakcs, and the fourth row operators for high level attacks. The last row is possible commands to be injected. 
 #### BrowserSetUp.py 
-This file is where all the selenium commands are based. The first few modules are pretty basic commands which involve opening the browser, getting elements, sending information to specific elements. Sending information then pressing return. Waiting for an element to appear before carrying on. Execute a short java script insert into the HTML page. Clicking a link based on an XPAth. Jumping to another browser page. Logging in to a DVWA. Changing the security level. And the three attacks.   
+This file is where all the selenium commands are based. The first few modules are pretty basic commands which involve opening the browser, getting elements, sending information to specific elements. Sending information then pressing return. Waiting for an element to appear before carrying on. Execute a short java script insert into the HTML page. Clicking a link based on an XPAth. Jumping to another browser page. Logging in to a DVWA. Changing the security level. And the attacks.   
 #### Pcap_Capture.py
 These pcap captures run subprocesses in the terminal to capture and record all the pcaps. This will throw up a lot of text in the terminal and slow the process down. 
 #### PassCracker.py 
@@ -144,6 +144,14 @@ This is the high level file you run to activate the whole script. It’s simple 
 This is the high level file you run to activate the Automatic Command Injection scrtipt script. It’s simple to run just navigate to the file, make sure you have all your set up in order and type python3 AutoComsI.py it should take around 2 minutes to generate 20 Pcap files.
 #### AutoBruteForce.py 
 This is the high level file you run to activate the Automatic Brute force script. It’s simple to run just navigate to the file, make sure you have all your set up in order and type python3 AutoBruteForce.py it should take around 3 minutes to generate 20 Pcap files.
+#### AutoXSS_stored.py 
+This is the high level file you run to activate the Automatic XSS stored attack. It’s simple to run just navigate to the file, make sure you have all your set up in order and type python3 AutoXSS_stored.py it should take you less than a minutes to generate 20 Pcap files.
+#### AutoXSS_reflected.py 
+This is the high level file you run to activate the Automatic XSS reflected attack. It’s simple to run just navigate to the file, make sure you have all your set up in order and type python3 AutoXSS_reflected.py it should take you less than a minutes to generate 20 Pcap files.
+#### AutoXSS_DOM.py 
+This is the high level file you run to activate the Automatic XSS DOM attack. It’s simple to run just navigate to the file, make sure you have all your set up in order and type python3 AutoXSS_DOM.py it should take you less than a minutes to generate 20 Pcap files.
+### AutoScan.py
+This is a high level file you run to activate 'Scans'. Scans here a groups of random clicks (The amount can be adjusted using UserSetUp.py/SCAN_ACTION) and data entries, which happen at random intervals. This is used to collect packets of random everyday behaviour or to simulate someone exploring the network harmlessly
 #### /Drivers
 A browser driver is what allows the browser to run, starts all the browsers scripts. You need to have the correct browser driver for your edition of the browser. This script assumes you are using google chrome or firefox and has the option for either. The Chrome Driver is v106.0.5249.61 and I think the geckodriver is version 0.32.0. A Browser driver probably exists somewhere in your system already in the application folder of your browser. But to save anyone having to go looking for it and because they are only about 10mb each the script has been directed it to automatically launch the browser from these by default. 
 #### /SQLIATTACKS
@@ -151,6 +159,17 @@ This is the folder where your pcap files will be sent after your tcp dump. If yo
 #### /COMSIATTACKS 
 This is the folder where your pcap files will be sent after your tcp dump from the command injection attack. If you use absolute numbering this file will fill up with many many pcap files. If you turn off absolute numbering, relative numbering will be used and the TCPdump will overwrite any old files with the same name.
 #### /BRUTEFORCEATTACKS 
+
+This is the folder where your pcap files will be sent after your tcp dump from the Brute Force Password attack. If you use absolute numbering this file will fill up with many many pcap files. If you turn off absolute numbering, relative numbering will be used and the TCPdump will overwrite any old files with the same name.
+#### /XSSDOMATTACKS 
+This is the folder where your pcap files will be sent after your tcp dump from the Brute Force Password attack. If you use absolute numbering this file will fill up with many many pcap files. If you turn off absolute numbering, relative numbering will be used and the TCPdump will overwrite any old files with the same name.
+#### /XSSREFLECTEDATTACKS 
+This is the folder where your pcap files will be sent after your tcp dump from the Brute Force Password attack. If you use absolute numbering this file will fill up with many many pcap files. If you turn off absolute numbering, relative numbering will be used and the TCPdump will overwrite any old files with the same name.
+#### /XSSSTOREDATTACK 
+This is the folder where your pcap files will be sent after your tcp dump from the Brute Force Password attack. If you use absolute numbering this file will fill up with many many pcap files. If you turn off absolute numbering, relative numbering will be used and the TCPdump will overwrite any old files with the same name.
+#### /SCANS
+This is the folder where your pcap files will be sent after your tcp dump from the Random Scans. If you use absolute numbering this file will fill up with many many pcap files. If you turn off absolute numbering, relative numbering will be used and the TCPdump will overwrite any old files with the same name.
+=======
 This is the folder where your pcap files will be sent after your tcp dump from the Brute Force Password attack. If you use absolute numbering this file will fill up with many many pcap files. If you turn off absolute numbering, relative numbering will be used and the TCPdump will overwrite any old 
 
 ### Requirements
@@ -172,3 +191,4 @@ collections, which can be installed with
 ```python
 pip install collections
 ```
+
